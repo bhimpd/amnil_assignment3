@@ -5,8 +5,7 @@
     "express": "^4.18.2"
   },
   "scripts": {
-    "start": "nodemon index.js"
-    
+    "start": "nodemon app.js"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

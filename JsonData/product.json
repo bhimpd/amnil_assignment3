@@ -35,10 +35,24 @@
     "product_type": "electonics"
   },
   {
-    "id": 9,
-    "name": "laptop",
-    "price": 80000,
+    "id": 10,
+    "name": "hp laptop",
+    "price": 70000,
     "quantity": 1,
+    "product_type": "electonics"
+  },
+  {
+    "id": 11,
+    "name": "del laptop",
+    "price": 110000,
+    "quantity": 4,
+    "product_type": "electonics"
+  },
+  {
+    "id": 12,
+    "name": "acer laptop",
+    "price": 44500,
+    "quantity": 3,
     "product_type": "electonics"
   }
 ]
