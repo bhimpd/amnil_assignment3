@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "camera",
+    "price": "55000",
+    "quantity": 4,
+    "product_type": "electronics"
+  },
+  {
+    "id": 2,
+    "name": "shirt",
+    "price": "3000",
+    "quantity": 6,
+    "product_type": "clothing"
+  },
+  {
+    "id": 3,
+    "name": "dslr camer",
+    "price": "65000",
+    "quantity": 2,
+    "product_type": "electronics"
+  },
+  {
+    "id": 7,
+    "name": "tshirt",
+    "price": "1000",
+    "quantity": 8,
+    "product_type": "clothing"
+  },
+  {
+    "id": 8,
+    "name": "mobiles",
+    "price": "30000",
+    "quantity": 5,
+    "product_type": "electonics"
+  },
+  {
+    "id": 9,
+    "name": "laptop",
+    "price": 80000,
+    "quantity": 1,
+    "product_type": "electonics"
+  }
+]
