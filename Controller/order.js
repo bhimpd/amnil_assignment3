@@ -28,71 +28,71 @@ exports.getOneOrder = (req, res) => {
 };
 
 exports.addToCart = (req, res) => {
-    const newCart = req.body;
-    const cartAlreadyPresent = cart.find(
-      (cartItem) => cartItem.user_id === newCart.user_id
-    );
-  
-    //if cart already present, update the cart else create a new cart
-    if (cartAlreadyPresent) {
-      const presentcartIndex = cart.indexOf(cartAlreadyPresent);
-  
-      // Loop through items in the newCart and update quantity or add new items
-      cartAlreadyPresent.items.forEach((element) => {
-        const alreadyPresentItemIndex = cartAlreadyPresent.items.findIndex(
-          (itemid) => itemid.id === element.id
-        );
-  
-        if (alreadyPresentItemIndex !== -1) {
-          cartAlreadyPresent.items[alreadyPresentItemIndex].quantity +=
-            element.quantity;
-        } else {
-          // Item doesn't exist, add it to the cart
-          cartAlreadyPresent.items.push(element);
-        }
-      });
-  
-      //calculating the total price of the products in the cart
-      cartAlreadyPresent.total_price = cartAlreadyPresent.items.reduce(
-        (acc, item) => {
-          const product = products.find((product) => product.id === item.id);
-          return acc + product.price * item.quantity;
-        },
-        0
+  const newCart = req.body;
+  const cartAlreadyPresent = cart.find(
+    (cartItem) => cartItem.user_id === newCart.user_id
+  );
+
+  //if cart already present, update the cart else create a new cart
+  if (cartAlreadyPresent) {
+    const presentcartIndex = cart.indexOf(cartAlreadyPresent);
+
+    // Loop through items in the newCart and update quantity or add new items
+    cartAlreadyPresent.items.forEach((element) => {
+      const alreadyPresentItemIndex = cartAlreadyPresent.items.findIndex(
+        (itemid) => itemid.id === element.id
       );
-  
-      cart[presentcartIndex] = cartAlreadyPresent;
-  
-      fs.writeFile(pathToCart, JSON.stringify(cart, null, 2), 'utf8', (err) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).send('Internal server error');
-        }
-        return res.status(200).send(cartAlreadyPresent);
-      });
-    } else {
-      cart.push(newCart);
-  
-      const index = cart.indexOf(newCart);
-      const userCart = cart[index];
-  
-      //calculating the total price of the products in the cart
-      userCart.total_price = (
-        userCart.items.reduce((acc, item) => {
-          const product = products.find((product) => product.id === item.id);
-          return acc + product.price * item.quantity;
-        }, 0)
-      ).toFixed(2);
-  
-      cart[index] = userCart;
-  
-      fs.writeFile(pathToCart, JSON.stringify(cart, null, 2), 'utf8', (err) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).send('Internal server error');
-        }
-        res.status(201).send(newCart);
-      });
-    }
-  };
-  
+
+      if (alreadyPresentItemIndex !== -1) {
+        cartAlreadyPresent.items[alreadyPresentItemIndex].quantity +=
+          element.quantity;
+
+        // element.quantity += req.body.quantity;
+      } else {
+        // Item doesn't exist, add it to the cart
+        cartAlreadyPresent.items.push(element);
+      }
+    });
+
+    //calculating the total price of the products in the cart
+
+    var sum = 0;
+    cartAlreadyPresent.total_price = cartAlreadyPresent.items.map((p) => {
+      sum = sum + p.price * p.quantity;
+      return sum;
+    });
+
+    cart[presentcartIndex] = cartAlreadyPresent;
+
+    fs.writeFile(pathToCart, JSON.stringify(cart, null, 2), "utf8", (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send("Internal server error");
+      }
+      return res.status(200).send(cartAlreadyPresent);
+    });
+  } else {
+    cart.push(newCart);
+
+    const index = cart.indexOf(newCart);
+    const userCart = cart[index];
+
+    //calculating the total price of the products in the cart
+    userCart.total_price = userCart.items
+      .reduce((acc, item) => {
+        const product = products.find((product) => product.id === item.id);
+        return acc + product.price * item.quantity;
+      }, 0)
+      .toFixed(2);
+
+    cart[index] = userCart;
+
+    fs.writeFile(pathToCart, JSON.stringify(cart, null, 2), "utf8", (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send("Internal server error");
+      }
+      res.status(201).send(newCart);
+    });
+  }
+};

@@ -6,72 +6,14 @@
       {
         "id": 1,
         "name": "Smartphone",
-        "price": 6000,
+        "price": 100,
         "description": "A high-quality smartphone with advanced features.",
-        "quantity": 200,
-        "product_type": "Electronics"
-      }
-    ],
-    "total_price": 11000000
-  },
-  {
-    "id": 2,
-    "user_id": 2,
-    "items": [
-      {
-        "id": 1,
-        "name": "laptop",
-        "price": 80000,
-        "description": "A high-quality laptop with advanced features.",
         "quantity": 40,
         "product_type": "Electronics"
       }
     ],
-    "total_price": 2200000
-  },
-  {
-    "id": 3,
-    "user_id": 3,
-    "items": [
-      {
-        "id": 1,
-        "name": "laptop",
-        "price": 80000,
-        "description": "A high-quality laptop with advanced features.",
-        "quantity": 5,
-        "product_type": "Electronics"
-      }
-    ],
-    "total_price": "275000.00"
-  },
-  {
-    "id": 4,
-    "user_id": 4,
-    "items": [
-      {
-        "id": 1,
-        "name": "camera",
-        "price": 50000,
-        "description": "A high-quality camera with advanced features.",
-        "quantity": 10,
-        "product_type": "Electronics"
-      }
-    ],
-    "total_price": "550000.00"
-  },
-  {
-    "id": 5,
-    "user_id": 5,
-    "items": [
-      {
-        "id": 1,
-        "name": "go pro",
-        "price": 2000,
-        "description": "A high-quality go pro with advanced features.",
-        "quantity": 20,
-        "product_type": "Electronics"
-      }
-    ],
-    "total_price": 1100000
+    "total_price": [
+      4000
+    ]
   }
 ]
