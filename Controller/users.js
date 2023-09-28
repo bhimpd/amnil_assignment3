@@ -8,10 +8,14 @@ function updatUserData(users) {
   fs.writeFileSync(pathToUsers, JSON.stringify(users, null, 2));
 }
 
+
+//to get all the userdata...
 exports.usersList = (req, res) => {
   res.json(users);
 };
 
+
+//to get single userdata
 exports.singleUser = (req, res) => {
   const userid = parseInt(req.params.id);
   const user = users.find((user) => user.id === userid);
@@ -24,6 +28,9 @@ exports.singleUser = (req, res) => {
   res.json(user);
 };
 
+
+
+//to create the user details
 exports.createUser = (req, res) => {
   const { id, name, email } = req.body;
   if (!id || !name || !email) {
@@ -39,6 +46,8 @@ exports.createUser = (req, res) => {
   return res.status(201).json({ success: "User created successfully" });
 };
 
+
+//to delete the user data
 exports.deleteUser = (req, res) => {
   const userid = parseInt(req.params.id);
   const indexOfUser = users.findIndex((user) => user.id === userid);
@@ -57,6 +66,8 @@ exports.deleteUser = (req, res) => {
 };
 
 
+
+//to update the user data..
 exports.updateUser = (req,res) =>{
     const userId = parseInt(req.params.id);
   const { name, email } = req.body;

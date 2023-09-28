@@ -114,7 +114,7 @@ exports.sortByPrice =(req,res)=>{
 //searching by name 
 
 exports.searchByName = (req, res) => {
-  const query = req.query.q; // The search query
+  const query = req.query.name; // The search query
   if (!query) {
     return res.status(400).json({ error: "Please provide a search query..." });
   }
